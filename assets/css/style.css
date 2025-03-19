@@ -1,0 +1,79 @@
+:root {
+    --yk-blue: #004481;
+    --yk-dark-blue: #00234A;
+    --yk-light-blue: #0056A4;
+    --yk-gray: #f5f7f9;
+    --yk-border: #E1E8EF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    background: var(--yk-gray);
+    min-height: 100vh;
+    color: #2C3E50;
+    line-height: 1.5;
+}
+
+.header {
+    background: #fff;
+    padding: 15px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    height: 60px;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 28px;
+}
+
+.main-content {
+    padding-top: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px 60px;
+}
+
+.heading h1 {
+    text-align: center;
+    color: var(--yk-blue);
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.left-side {
+    flex: 1;
+    max-width: 460px;
+}
+
+.login-tabs {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* ... Diğer stiller devam edecek ... */ 
